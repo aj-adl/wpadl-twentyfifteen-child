@@ -78,6 +78,8 @@ function BSHP_2015_wrapper_end() {
 // Removes WooCommerce Styles across the WHOLE SITE
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
+// Late priority so WC can't jump back in and re-enqueue them
+add_action( 'wp_enqueue_scripts', 'woocommerce_de_script', 100 );
 
 // Removes WooCommerce Scripts on non shop/product/cart/checkout pages
 function woocommerce_de_script() {
@@ -92,9 +94,6 @@ function woocommerce_de_script() {
       }
     }
 }
-
-// Late priority so WC can't jump back in and re-enqueue them
-add_action( 'wp_enqueue_scripts', 'woocommerce_de_script', 100 );
 
 // Removes Contact Form 7 scripts and Styles except on contact-us page 
 add_action( 'wp', 'BSHP_cf7_conditionally_load_assets_simple' );
