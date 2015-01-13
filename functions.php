@@ -23,3 +23,11 @@ function BSHP_inline_modernizr() {
 
   echo $modernizr;
 }
+
+// Adding any Javascript Scripts I would like to register/load
+add_action( 'wp_enqueue_scripts', 'BSHP_add_scripts' );
+function BSHP_add_scripts() {
+
+  wp_enqueue_script( 'scrollreveal', get_stylesheet_directory_uri() . '/js/scrollReveal.min.js', array(), null, true );
+
+}
