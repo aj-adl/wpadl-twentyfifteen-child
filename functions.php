@@ -74,3 +74,6 @@ function BSHP_2015_wrapper_start() {
 function BSHP_2015_wrapper_end() {
   echo '</section>';
 }
+
+// Removes WooCommerce Styles across the WHOLE SITE
+add_filter( 'woocommerce_enqueue_styles', '__return_false' );
