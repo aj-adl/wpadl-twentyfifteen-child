@@ -11,3 +11,35 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready, SVG, Blue, Green
  Text Domain:  twenty-fifteen-child
 */
+
+/*
+ * General Theme Overrides etc
+ *
+ * Using Modernizr classes to only add SVG / RGB where appropriate
+ */
+
+body {
+	background: url('img/background-blue.jpg');
+	background-position: top right;
+	background-repeat: repeat-y;
+	background-attachment: fixed;
+}
+
+.svg body {
+	background: url('img/background-blue.svg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+body::before {
+	background-color: #ffffff;
+}
+
+.rgba body::before {
+	background-color: rgba(255,255,255,0.75);
+}
+
+.rgba #content code {
+	background: rgba(0,0,0,.1);
+	padding: 2px 3px;
+}
