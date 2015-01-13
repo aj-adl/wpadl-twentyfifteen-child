@@ -95,3 +95,19 @@ function woocommerce_de_script() {
 
 // Late priority so WC can't jump back in and re-enqueue them
 add_action( 'wp_enqueue_scripts', 'woocommerce_de_script', 100 );
+
+// Removes Contact Form 7 scripts and Styles except on contact-us page 
+add_action( 'wp', 'cf7_conditionally_load_assets_simple' );
+
+// returns false, used for setting filters to false
+function return_false() {
+  return false;
+}
+
+function BSHP_cf7_conditionally_load_assets_simple() {
+  // Any Number of conditional statments can go here ( using || for OR, && for AND )
+  if ( !is_page( 'contact-us') ) {
+    add_filter( 'wpcf7_load_css', 'return_false' );
+    add_filter( 'wpcf7_load_js', 'return_false' );
+  }
+}
