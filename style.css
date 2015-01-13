@@ -142,6 +142,29 @@ body::before {
 	border-top: none;
 }
 
+/**
+ * 
+ * Discuss is also bad with twenty fifteen
+ * 
+ * Lets try and change it
+ *
+ */
+
+ #main #disqus_thread {
+ 	margin: 8.3333% 8.3333% 0;
+ 	background: #ffffff;
+ }
+
+ #disqus_thread iframe {
+ 	padding: 30px;
+ }
+
+ #disqus_thread .loader {
+ 	margin: 40px 0 !important;
+ }
+
+
+
 /***
  *
  *    $$$$$$$\  $$\ $$\ $$\ $$\                           $$$$$$$\            $$\ $$\                               
