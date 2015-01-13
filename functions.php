@@ -77,3 +77,21 @@ function BSHP_2015_wrapper_end() {
 
 // Removes WooCommerce Styles across the WHOLE SITE
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
+
+// Removes WooCommerce Scripts on non shop/product/cart/checkout pages
+function woocommerce_de_script() {
+    if (function_exists( 'is_woocommerce' )) {
+     if (!is_shop() && !is_cart() && !is_checkout() && !is_account_page() ) { // if we're not on a Woocommerce page, dequeue all of these scripts
+      wp_dequeue_script('wc-add-to-cart');
+      wp_dequeue_script('jquery-blockui');
+      wp_dequeue_script('jquery-placeholder');
+      wp_dequeue_script('woocommerce');
+      wp_dequeue_script('jquery-cookie');
+      wp_dequeue_script('wc-cart-fragments');
+      }
+    }
+}
+
+// Late priority so WC can't jump back in and re-enqueue them
+add_action( 'wp_enqueue_scripts', 'woocommerce_de_script', 100 );
