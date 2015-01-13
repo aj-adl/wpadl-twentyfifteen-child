@@ -59,3 +59,18 @@ function BSHP_sr_not_the_first() {
   }
   $sr++;
 }
+
+// Fix to make WooCommerce templates work within twentyfiteen theme
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
+add_action('woocommerce_before_main_content', 'BSHP_2015_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'BSHP_2015_wrapper_end', 10);
+
+function BSHP_2015_wrapper_start() {
+  echo '<section id="main">';
+}
+
+function BSHP_2015_wrapper_end() {
+  echo '</section>';
+}
