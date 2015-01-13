@@ -43,3 +43,101 @@ body::before {
 	background: rgba(0,0,0,.1);
 	padding: 2px 3px;
 }
+
+/**
+ * Twenty Fifteen specific styles
+ * 
+ * For WooCommerce, gets you like 80% of the way there
+ * Still needs a lot of work
+ *
+ * WC 2.3 will remove need for this
+ *
+ */
+
+.woocommerce #main {
+	padding-left: 7.6923%;
+	padding-right: 7.6923%;
+	padding-top: 7.6923%;
+	padding-bottom: 7.6923%;
+	background: #fff;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.woocommerce #main .page-title {
+	margin-left: 0;
+}
+
+
+@media screen and (min-width: 59.6875em) {
+	.woocommerce #main {
+		margin-left: 8.3333%;
+		margin-right: 8.3333%;
+	}
+	
+
+	.single-product .twentyfifteen .entry-summary {
+		padding: 0 !important;
+	}
+}
+
+@media screen and (min-width: 38.75em) {
+	.woocommerce #main {
+		margin-right: 7.6923%;
+		margin-left: 7.6923%;
+		margin-top: 8.3333%;
+	}
+}
+
+.woocommerce #content #main .product .images, 
+.woocommerce-page #content div.product div.images,
+.woocommerce #content #main .product .summary, 
+.woocommerce div.product div.summary {
+	float: none;
+	width: 100%;
+}
+
+.woocommerce .product .summary td, .woocommerce .product .summary table {
+	border: none;
+}
+
+.woocommerce .woocommerce-tabs {
+	margin-bottom: 
+}
+.woocommerce ul.tabs {
+	list-style: none;
+	display: table;
+	table-layout: fixed;
+	width: 686px;
+	margin-bottom: 0;
+}
+.woocommerce ul.tabs li {
+	display: table-cell;
+	text-align: center;
+	padding: 10px 0;
+	border-right: 1px solid #5ECDD2;
+	border-top: 1px solid #5ECDD2;
+	border-bottom: 1px solid #5ECDD2;
+}
+
+.woocommerce ul.tabs li.active {
+	border-bottom: none;
+}
+
+.woocommerce ul.tabs li:first-child {
+	border-left: 1px solid #5ECDD2;
+}
+
+.woocommerce ul.tabs a {
+	color: #5ECDD2;
+}
+
+.woocommerce ul.tabs .active a,
+.woocommerce ul.tabs li:hover a {
+	border-bottom: solid 3px #5ECDD2;
+}
+
+.woocommerce .woocommerce-tabs .panel {
+	padding-top: 10%;
+	border: 1px solid #5ECDD2;
+	border-top: none;
+}
