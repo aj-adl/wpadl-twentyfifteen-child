@@ -34,6 +34,13 @@ function BSHP_add_scripts() {
 
 }
 
+// Adding any CSS Stylesheets I would like to register/load
+add_action( 'wp_enqueue_scripts', 'BSHP_add_styles' );
+function BSHP_add_styles() {
+  // not loading any at this time
+  // here for later
+}
+
 // Added to Work with scrollReveal.JS
 // An example of outputting inline CSS in the <head>
 
