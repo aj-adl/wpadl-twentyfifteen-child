@@ -41,3 +41,14 @@ add_action( 'wp_head', 'BSHP_scroll_reveal_style_hack', 2);
 function BSHP_scroll_reveal_style_hack() {
   echo '<style> [data-sr] { visibility: hidden; } </style>';
 }
+
+// called within the loop, only prints data-sr attribute
+// if it is NOT the first post (so first post appears instantly)
+function BSHP_sr_not_the_first() {
+  static $sr = 0;
+
+  if ($sr > 0) {
+    echo 'data-sr';
+  }
+  $sr++;
+}
