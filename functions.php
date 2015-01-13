@@ -29,5 +29,15 @@ add_action( 'wp_enqueue_scripts', 'BSHP_add_scripts' );
 function BSHP_add_scripts() {
 
   wp_enqueue_script( 'scrollreveal', get_stylesheet_directory_uri() . '/js/scrollReveal.min.js', array(), null, true );
+  
+  wp_enqueue_script( 'custom', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery', 'scrollreveal'), null, true );
 
+}
+
+// Added to Work with scrollReveal.JS
+// An example of outputting inline CSS in the <head>
+
+add_action( 'wp_head', 'BSHP_scroll_reveal_style_hack', 2);
+function BSHP_scroll_reveal_style_hack() {
+  echo '<style> [data-sr] { visibility: hidden; } </style>';
 }
