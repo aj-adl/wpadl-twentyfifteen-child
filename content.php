@@ -12,7 +12,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> data-sr>
 	<?php
 		// Post thumbnail.
 		twentyfifteen_post_thumbnail();
