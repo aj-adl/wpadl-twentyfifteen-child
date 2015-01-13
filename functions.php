@@ -97,7 +97,7 @@ function woocommerce_de_script() {
 add_action( 'wp_enqueue_scripts', 'woocommerce_de_script', 100 );
 
 // Removes Contact Form 7 scripts and Styles except on contact-us page 
-add_action( 'wp', 'cf7_conditionally_load_assets_simple' );
+add_action( 'wp', 'BSHP_cf7_conditionally_load_assets_simple' );
 
 // returns false, used for setting filters to false
 function return_false() {
