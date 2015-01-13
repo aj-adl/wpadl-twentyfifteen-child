@@ -141,3 +141,55 @@ body::before {
 	border: 1px solid #5ECDD2;
 	border-top: none;
 }
+
+/***
+ *
+ *    $$$$$$$\  $$\ $$\ $$\ $$\                           $$$$$$$\            $$\ $$\                               
+ *    $$  __$$\ \__|$$ |$$ |\__|                          $$  __$$\           $$ |$$ |                              
+ *    $$ |  $$ |$$\ $$ |$$ |$$\  $$$$$$\  $$$$$$$\        $$ |  $$ | $$$$$$\  $$ |$$ | $$$$$$\   $$$$$$\   $$$$$$$\ 
+ *    $$$$$$$\ |$$ |$$ |$$ |$$ |$$  __$$\ $$  __$$\       $$ |  $$ |$$  __$$\ $$ |$$ | \____$$\ $$  __$$\ $$  _____|
+ *    $$  __$$\ $$ |$$ |$$ |$$ |$$ /  $$ |$$ |  $$ |      $$ |  $$ |$$ /  $$ |$$ |$$ | $$$$$$$ |$$ |  \__|\$$$$$$\  
+ *    $$ |  $$ |$$ |$$ |$$ |$$ |$$ |  $$ |$$ |  $$ |      $$ |  $$ |$$ |  $$ |$$ |$$ |$$  __$$ |$$ |       \____$$\ 
+ *    $$$$$$$  |$$ |$$ |$$ |$$ |\$$$$$$  |$$ |  $$ |      $$$$$$$  |\$$$$$$  |$$ |$$ |\$$$$$$$ |$$ |      $$$$$$$  |
+ *    \_______/ \__|\__|\__|\__| \______/ \__|  \__|      \_______/  \______/ \__|\__| \_______|\__|      \_______/ 
+ *
+ */
+
+ /* In the name of all that is holy remove that ^^^  before using this in production */
+
+.bill {
+  background:rgba(238, 239, 208, 0.8);
+  border: solid green 5px;
+	width:110px;
+	height:55px;
+	position: absolute;
+	bottom:100px;
+	-webkit-animation: bfall 5s linear infinite;
+  -moz-animation: bfall 5s linear infinite;
+  text-align: center;
+  font-size: 40px;
+  line-height: 45px;
+  color: green;
+  
+}
+
+/* animate the bills*/
+@-webkit-keyframes bfall {
+	to {margin-top:1200px;}
+}
+@-moz-keyframes bfall {
+	to {margin-top:1200px;}
+}
+
+.stop-button {
+	position: fixed;
+	display: block;
+	max-width: 300px;
+	bottom: 10px;
+	right: 10px;
+	font-size: 2em;
+	text-transform: uppercase;
+	padding: .5em;
+	background-color: red;
+	color: #ffffff;
+}

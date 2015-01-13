@@ -11,6 +11,17 @@ jQuery(document).ready(function($) {
 	window.sr = new scrollReveal( srConfig );
 
 
+	//  $$$$$$$\  $$\ $$\ $$\ $$\                           $$$$$$$\            $$\ $$\                               
+	//  $$  __$$\ \__|$$ |$$ |\__|                          $$  __$$\           $$ |$$ |                              
+	//  $$ |  $$ |$$\ $$ |$$ |$$\  $$$$$$\  $$$$$$$\        $$ |  $$ | $$$$$$\  $$ |$$ | $$$$$$\   $$$$$$\   $$$$$$$\ 
+	//  $$$$$$$\ |$$ |$$ |$$ |$$ |$$  __$$\ $$  __$$\       $$ |  $$ |$$  __$$\ $$ |$$ | \____$$\ $$  __$$\ $$  _____|
+	//  $$  __$$\ $$ |$$ |$$ |$$ |$$ /  $$ |$$ |  $$ |      $$ |  $$ |$$ /  $$ |$$ |$$ | $$$$$$$ |$$ |  \__|\$$$$$$\  
+	//  $$ |  $$ |$$ |$$ |$$ |$$ |$$ |  $$ |$$ |  $$ |      $$ |  $$ |$$ |  $$ |$$ |$$ |$$  __$$ |$$ |       \____$$\ 
+	//  $$$$$$$  |$$ |$$ |$$ |$$ |\$$$$$$  |$$ |  $$ |      $$$$$$$  |\$$$$$$  |$$ |$$ |\$$$$$$$ |$$ |      $$$$$$$  |
+	//  \_______/ \__|\__|\__|\__| \______/ \__|  \__|      \_______/  \______/ \__|\__| \_______|\__|      \_______/ 
+
+	// Super Not Performance Big Header Such Wow Very Remove Minify Yes
+
 	// All Hook events triggered by this JS are on #page
 
 	// All click events are namespaced with 'billz'
@@ -19,13 +30,17 @@ jQuery(document).ready(function($) {
 
 	var billz = {
 
-
+		running: false,
 		numberOf: 500,
 		setup: function() {
 
 			// Bind the click event of the button
 			$('#billions').on('click.billz', billz.create);
-			
+
+			// In Case someone wants to hook in (WTF WHY??)
+			$('#page').trigger("billsAfterSetup");
+
+
 		},
 		randRange: function(minNum, maxNum) {
 
@@ -35,9 +50,18 @@ jQuery(document).ready(function($) {
 		},
 		create: function() {
 
+			//Stop Multiple Instances
+			if (billz.running) {
+				return;
+			}
+
+			// Status
+			billz.running = true;
+
 			// Append Container Div
 			$('#page').append('<div class="bills"></div>');
 
+			$('#page').trigger('billsBeforeCreate');
 			// Loop to create money
 			for( i=1;i<billz.numberOf;i++) {
 
@@ -50,6 +74,31 @@ jQuery(document).ready(function($) {
 				$('#bill'+i).css('left',billLeft);
 				$('#bill'+i).css('top',billTop);
 			}
+
+			// Hook in after creation, maybe play some sweet tunes yo. 
+			$('#page').trigger('billsAfterCreate');
+
+			billz.makeStopButton();
+
+		},
+		makeStopButton: function() {
+
+			// Append Stop Button
+			$('#page').append('<button class="stop-button" id="stop-button">STOP</button>');
+			// Bind Stop Events
+			$('.stop-button').on( 'click.billz', billz.playtimeOver );
+
+		},
+		playtimeOver: function() {
+			// Hook in before we destroy everything
+			$('#page').trigger('billsBeforeRemove');
+
+			// HULK SMASH
+			$( '.bills' ).children().stop().remove();
+			$('.stop-button').remove();
+			billz.running = false;
+
+			$('#page').trigger('billsAfterRemove');
 
 		}
 
