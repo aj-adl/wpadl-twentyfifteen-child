@@ -1,3 +1,7 @@
+// Fire as soon as it loads, later we know = more repaints :(
+
+if( !Modernizr.svg ){ document.documentElement.className += " no-svg";}
+
 // Standard No Conflict wrappers. 
 jQuery(document).ready(function($) {
 

@@ -18,16 +18,16 @@
  * Using Modernizr classes to only add SVG / RGB where appropriate
  */
 
-body {
-	background: url('img/background-blue.jpg');
-	background-position: top right;
-	background-repeat: repeat-y;
-	background-attachment: fixed;
-}
-
 .svg body {
 	background: url('img/background-blue.svg');
 	background-size: cover;
+	background-attachment: fixed;
+}
+
+.no-svg body {
+	background: url('img/background-blue.jpg');
+	background-position: top right;
+	background-repeat: repeat-y;
 	background-attachment: fixed;
 }
 
