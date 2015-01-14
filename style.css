@@ -181,27 +181,28 @@ body::before {
  /* In the name of all that is holy remove that ^^^  before using this in production */
 
 .bill {
-  background:rgba(238, 239, 208, 0.8);
-  border: solid green 5px;
+  	background:rgba(238, 239, 208, 0.8);
+  	border: solid green 5px;
 	width:110px;
 	height:55px;
-	position: absolute;
-	bottom:100px;
-	-webkit-animation: bfall 5s linear infinite;
-  -moz-animation: bfall 5s linear infinite;
-  text-align: center;
-  font-size: 40px;
-  line-height: 45px;
-  color: green;
+	position: fixed;
+	-webkit-animation: bfall 7s linear infinite;
+  	-moz-animation: bfall 7s linear infinite;
+  	text-align: center;
+  	font-size: 40px;
+  	line-height: 45px;
+  	color: green;
   
 }
 
 /* animate the bills*/
 @-webkit-keyframes bfall {
-	to {margin-top:1200px;}
+	from {margin-top:0;}
+	to {margin-top: 1550px;}
 }
 @-moz-keyframes bfall {
-	to {margin-top:1200px;}
+	from {margin-top:0;}
+	to {margin-top: 1550px;}
 }
 
 .stop-button {

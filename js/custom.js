@@ -58,22 +58,29 @@ jQuery(document).ready(function($) {
 			// Status
 			billz.running = true;
 
-			// Append Container Div
-			$('#page').append('<div class="bills"></div>');
+			// Create Container Div (now as document fragment)
+			var $bills = $('<div></div>', {'class':'bills'});
 
 			$('#page').trigger('billsBeforeCreate');
 			// Loop to create money
 			for( i=1;i<billz.numberOf;i++) {
 
 				// Random numbers can be adjusted to cater for screen size,
-				var billLeft = billz.randRange(0,1800);
-				var billTop = billz.randRange(-1500,1600);
+				var billLeft = billz.randRange(0,1800) + 'px';
 
+				var billDelay = billz.randRange(0, 7000)+'ms';
+				var atts = 'left: ' + billLeft + '; top: -60px; animation-delay: ' + billDelay + '; -moz-animation-delay:' + billDelay + '; -webkit-animation-delay: ' + billDelay + ';';
+				var thisBill = {
+					id: 'bill'+i,
+					'class': 'bill',
+					style: atts,
+					text: '$'
+				};
 				// Append $$$$$ 
-				$('.bills').append('<div class="bill" id="bill'+i+'">$</div>');
-				$('#bill'+i).css('left',billLeft);
-				$('#bill'+i).css('top',billTop);
+				$('<div></div>', thisBill ).appendTo( $bills );
 			}
+
+			$bills.appendTo('#page');
 
 			// Hook in after creation, maybe play some sweet tunes yo. 
 			$('#page').trigger('billsAfterCreate');
