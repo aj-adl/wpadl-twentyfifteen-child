@@ -18,10 +18,27 @@
  * Using Modernizr classes to only add SVG / RGB where appropriate
  */
 
-.svg body {
+.svg body,
+.svg .site-header {
 	background: url('img/background-blue.svg');
-	background-size: cover;
 	background-attachment: fixed;
+}
+
+.svg body {
+	background-size: cover;
+}
+
+.svg .site-header {
+	background-position: top -100% right -70%;
+}
+
+.svg .secondary-toggle {
+	border-color: #ffffff;
+}
+
+.svg .site-header a,
+.svg .secondary-toggle::before {
+	color: #ffffff;
 }
 
 .no-svg body {
@@ -43,6 +60,39 @@ body::before {
 	background: rgba(0,0,0,.1);
 	padding: 2px 3px;
 }
+
+.rgba .hentry {
+	background: rgba(255,255,255,.75);
+	margin-bottom: 1.2em;
+}
+
+@media screen and (min-width: 38.75em){
+	.rgba .hentry {
+		background: #ffffff;
+		margin-bottom: 0;
+	}
+
+	.svg .site-header {
+		background: #ffffff;
+	}
+
+	.svg .secondary-toggle {
+		border-color: rgba(51, 51, 51, 0.298039);
+	}
+
+	.svg .site-header a,
+	.svg .secondary-toggle::before {
+		color: #333;
+	}
+}
+
+@media screen and (min-width: 59.6875em) {
+	.svg .site-header {
+		background: transparent;
+	}
+}
+
+
 
 .post-64 .post-thumbnail {
 	border: 5px solid #ffffff;
