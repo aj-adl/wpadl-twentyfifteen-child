@@ -16,7 +16,7 @@ function theme_enqueue_styles() {
 // An example of outputting inline javascript in the <head>
 // Changing the action from 'wp_head' to 'wp_footer' would place it before </body> tag
 
-add_action( 'wp_head', 'BSHP_inline_modernizr', 9 );
+add_action( 'wp_head', 'BSHP_inline_modernizr', 2 );
 function BSHP_inline_modernizr() {
   
   include_once('inc/inline_modernizr.php');
@@ -110,3 +110,32 @@ function BSHP_cf7_conditionally_load_assets_simple() {
     add_filter( 'wpcf7_load_js', 'return_false' );
   }
 }
+
+// Let's clean up the head because it is ugly as SMH
+
+// Remove Default WP stuff
+function remove_wp_head_crap() {
+  remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
+  remove_action('wp_head', 'wp_generator'); // remove wordpress version
+
+  remove_action('wp_head', 'feed_links', 2); // remove rss feed links (make sure you add them in yourself if youre using feedblitz or an rss service)
+  remove_action('wp_head', 'feed_links_extra', 3); // removes all extra rss feed links
+
+  remove_action('wp_head', 'index_rel_link'); // remove link to index page
+  remove_action('wp_head', 'wlwmanifest_link'); // remove wlwmanifest.xml (needed to support windows live writer)
+
+  remove_action('wp_head', 'start_post_rel_link', 10, 0); // remove random post link
+  remove_action('wp_head', 'parent_post_rel_link', 10, 0); // remove parent post link
+  remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // remove the next and previous post links
+  remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+
+  remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+}
+
+add_action( 'get_header', 'remove_wp_head_crap' );
+
+//Remove WooCommerce Generator Tag
+function remove_woo_commerce_generator_tag() {
+    remove_action( 'wp_head','wc_generator_tag' );
+}
+add_action( 'get_header','remove_woo_commerce_generator_tag' );
